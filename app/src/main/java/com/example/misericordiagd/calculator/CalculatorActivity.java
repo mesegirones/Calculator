@@ -13,6 +13,7 @@ public class CalculatorActivity extends AppCompatActivity {
     private TextView numView;
     private String numAnt = "";
     private char oper = ' ';
+   // private String point ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,7 @@ public class CalculatorActivity extends AppCompatActivity {
 
     public void onClickDigit(View view){
         Button b = (Button)view;
-        Toast.makeText(this, b.getText().toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, b.getText().toString(), Toast.LENGTH_SHORT).show();
         num += b.getText().toString();
         numView.setText(num);
     }
@@ -50,7 +51,29 @@ public class CalculatorActivity extends AppCompatActivity {
             case '-':
                 num = Double.toString( xant - x);
                 break;
+            case '*':
+                num = Double.toString( xant * x);
+                break;
+            case '/':
+                num = Double.toString( xant / x);
+                break;
         }
+        numView.setText(num);
+    }
+
+    public void onClickPoint(View view){
+        Button p = (Button) view;
+        String point = "";
+        if(point.isEmpty()) {
+            point = p.getText().toString();
+            num += point;
+            numView.setText(num);
+        }
+    }
+
+    public void onClickC(View view) {
+        num = "";
+        numAnt = "";
         numView.setText(num);
     }
 }
